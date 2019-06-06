@@ -7,6 +7,7 @@ import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.model.CollectionChangeType;
 import com.haulmont.cuba.gui.model.CollectionContainer;
 import com.haulmont.cuba.gui.model.CollectionPropertyContainer;
+import com.haulmont.cuba.gui.model.InstanceContainer;
 import com.haulmont.cuba.gui.screen.*;
 import com.company.pizzaplace.entity.Order;
 
@@ -39,6 +40,8 @@ public class OrderEdit extends StandardEditor<Order> {
     private Notifications notifications;
     @Inject
     private Table<DishQuantity> linesTable;
+    @Inject
+    private InstanceContainer<Order> orderDc;
 
 
     @Subscribe("customerField")
@@ -57,6 +60,7 @@ public class OrderEdit extends StandardEditor<Order> {
     @Subscribe
     private void onBeforeCommitChanges(BeforeCommitChangesEvent event) {
         getEditedEntity().setOrderTime(LocalDateTime.now());
+
     }
 
     @Subscribe(id = "linesDc", target = Target.DATA_CONTAINER)
@@ -64,7 +68,6 @@ public class OrderEdit extends StandardEditor<Order> {
     private void onLinesDcCollectionChange(CollectionContainer.CollectionChangeEvent<DishQuantity> event) {
         getEditedEntity().setTotalAmount(BigDecimal.ZERO);
         getEditedEntity().setFinalAmount(BigDecimal.ZERO);
-
         if (event.getChangeType() != CollectionChangeType.REFRESH) {
             calculateAmount();
         }
@@ -76,9 +79,6 @@ public class OrderEdit extends StandardEditor<Order> {
 
         getEditedEntity().setFinalAmount(amountField.getValue().subtract(discountField.getValue()));
 
-        if(finalAmountField.getValue().equals(BigDecimal.ZERO)){
-            notifications.create().withCaption("You Have have not ordered Anything").show();
-        }
     }
 
     private void calculateAmount() {

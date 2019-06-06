@@ -37,7 +37,8 @@ public class OrderEdit extends StandardEditor<Order> {
     private TextField<BigDecimal> finalAmountField;
     @Inject
     private Notifications notifications;
-
+    @Inject
+    private Table<DishQuantity> linesTable;
 
 
     @Subscribe("customerField")
@@ -59,6 +60,7 @@ public class OrderEdit extends StandardEditor<Order> {
     }
 
     @Subscribe(id = "linesDc", target = Target.DATA_CONTAINER)
+
     private void onLinesDcCollectionChange(CollectionContainer.CollectionChangeEvent<DishQuantity> event) {
         getEditedEntity().setTotalAmount(BigDecimal.ZERO);
         getEditedEntity().setFinalAmount(BigDecimal.ZERO);
@@ -66,7 +68,6 @@ public class OrderEdit extends StandardEditor<Order> {
         if (event.getChangeType() != CollectionChangeType.REFRESH) {
             calculateAmount();
         }
-
         discount = getCustomerDiscount();
         getEditedEntity().setDiscount(discount.multiply(amountField.getValue()));
 
@@ -76,8 +77,7 @@ public class OrderEdit extends StandardEditor<Order> {
         getEditedEntity().setFinalAmount(amountField.getValue().subtract(discountField.getValue()));
 
         if(finalAmountField.getValue().equals(BigDecimal.ZERO)){
-            notifications.create().withCaption("You Have have not ordered Anything");
-            getEditedEntity().setFinalAmount(null);
+            notifications.create().withCaption("You Have have not ordered Anything").show();
         }
     }
 
@@ -134,5 +134,4 @@ public class OrderEdit extends StandardEditor<Order> {
         }
         return BigDecimal.ZERO;
     }
-
 }

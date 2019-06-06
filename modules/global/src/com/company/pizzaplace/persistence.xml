@@ -8,5 +8,6 @@
         <class>com.company.pizzaplace.entity.Dish</class>
         <class>com.company.pizzaplace.entity.Order</class>
         <class>com.company.pizzaplace.entity.DishQuantity</class>
+        <class>com.company.pizzaplace.entity.Delivered</class>
     </persistence-unit>
 </persistence>

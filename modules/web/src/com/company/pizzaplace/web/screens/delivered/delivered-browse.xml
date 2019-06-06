@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="deliveredsTable"
+        messagesPack="com.company.pizzaplace.web.screens.delivered">
+    <data readOnly="true">
+        <collection id="deliveredsDc"
+                    class="com.company.pizzaplace.entity.Delivered"
+                    view="delivered-view_1">
+            <loader id="deliveredsDl">
+                <query>
+                    <![CDATA[select e from pizzaplace_Delivered e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="deliveredsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="deliveredsTable"
+                dataLoader="deliveredsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="deliveredsTable"
+                    width="100%"
+                    dataContainer="deliveredsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="order"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="deliveredsTable.create"/>
+                <button id="editBtn" action="deliveredsTable.edit"/>
+                <button id="removeBtn" action="deliveredsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

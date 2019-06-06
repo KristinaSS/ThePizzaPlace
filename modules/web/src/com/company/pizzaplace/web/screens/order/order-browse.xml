@@ -37,15 +37,17 @@
                 <column id="address"/>
                 <column id="telephoneNumber"/>
                 <column id="finalAmount"/>
-                <column id="isDelivered" editable="true"/>
+                <column id="orderTime"/>
+                <column id="isDelivered"/>
                 <column id="deliveryTime"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
                 <button id="createBtn" action="ordersTable.create"/>
-                <button id="editBtn" action="ordersTable.edit" enable="false" visible="false"/>
+                <button id="editBtn" action="ordersTable.edit"/>
                 <button id="removeBtn" action="ordersTable.remove"/>
+                <button id="deliveryBtn" caption="Deliver!"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

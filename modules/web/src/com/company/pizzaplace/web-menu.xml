@@ -6,5 +6,6 @@
         <item screen="pizzaplace_DishType.browse"/>
         <item screen="pizzaplace_Dish.browse"/>
         <item screen="pizzaplace_Order.browse"/>
+        <item screen="pizzaplace_Delivered.browse"/>
     </menu>
 </menu-config>

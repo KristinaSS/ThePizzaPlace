@@ -1,0 +1,1 @@
+alter table PIZZAPLACE_DELIVERED alter column DELIVERY_TIME rename to DELIVERY_TIME__U06244 ^

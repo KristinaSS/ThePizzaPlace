@@ -1,0 +1,1 @@
+drop table PIZZAPLACE_DELIVERED_ORDER_LINK__U06421 if exists cascade ;

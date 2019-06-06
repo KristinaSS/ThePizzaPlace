@@ -12,7 +12,31 @@
         <property name="ingredients" view="_minimal"/>
     </view>
     <view entity="pizzaplace_Order" name="order-view" extends="_local">
-        <property name="customer" view="_minimal"/>
-        <property name="lines" view="_minimal"/>
+        <property name="customer" view="_minimal">
+            <property name="numberOfOrders"/>
+        </property>
+        <property name="lines" view="_minimal">
+            <property name="dish" view="_minimal">
+                <property name="price"/>
+            </property>
+            <property name="quantity"/>
+        </property>
+    </view>
+    <view entity="pizzaplace_Delivered" name="delivered-view" extends="_local">
+        <property name="order" view="_minimal">
+            <property name="customer" view="_minimal">
+                <property name="numberOfOrders"/>
+            </property>
+            <property name="finalAmount"/>
+            <property name="isDelivered"/>
+        </property>
+    </view>
+    <view entity="pizzaplace_Delivered" name="delivered-view_1" extends="_local">
+        <property name="order" view="_minimal">
+            <property name="customer" view="_minimal">
+                <property name="numberOfOrders"/>
+            </property>
+            <property name="finalAmount"/>
+        </property>
     </view>
 </views>

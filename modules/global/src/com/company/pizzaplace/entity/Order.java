@@ -1,6 +1,7 @@
 package com.company.pizzaplace.entity;
 
 import com.haulmont.chile.core.annotations.Composition;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@NamePattern("%s %s|name,address")
 @Table(name = "PIZZAPLACE_ORDER")
 @Entity(name = "pizzaplace_Order")
 public class Order extends StandardEntity {
@@ -61,6 +63,16 @@ public class Order extends StandardEntity {
     @Lob
     @Column(name = "SPECIAL_DELIVERY_INSTRUCTIONS")
     protected String specialDeliveryInstructions;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "order")
+    protected Delivered delivered;
+
+    public Delivered getDelivered() {
+        return delivered;
+    }
+
+    public void setDelivered(Delivered delivered) {
+        this.delivered = delivered;
+    }
 
     public String getSpecialDeliveryInstructions() {
         return specialDeliveryInstructions;

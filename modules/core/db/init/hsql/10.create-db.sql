@@ -125,3 +125,19 @@ create table PIZZAPLACE_DISH_QUANTITY (
     primary key (ID)
 )^
 -- end PIZZAPLACE_DISH_QUANTITY
+-- begin PIZZAPLACE_DELIVERED
+create table PIZZAPLACE_DELIVERED (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    ORDER_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end PIZZAPLACE_DELIVERED

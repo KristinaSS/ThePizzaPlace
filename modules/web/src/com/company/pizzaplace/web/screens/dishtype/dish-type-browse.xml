@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="dishTypesTable"
+        messagesPack="com.company.pizzaplace.web.screens.dishtype">
+    <data readOnly="true">
+        <collection id="dishTypesDc"
+                    class="com.company.pizzaplace.entity.DishType"
+                    view="_local">
+            <loader id="dishTypesDl">
+                <query>
+                    <![CDATA[select e from pizzaplace_DishType e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="dishTypesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="dishTypesTable"
+                dataLoader="dishTypesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="dishTypesTable"
+                    width="100%"
+                    dataContainer="dishTypesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="dishTypesTable.create"/>
+                <button id="editBtn" action="dishTypesTable.edit"/>
+                <button id="removeBtn" action="dishTypesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

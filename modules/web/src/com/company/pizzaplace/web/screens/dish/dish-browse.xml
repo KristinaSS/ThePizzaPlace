@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="dishesTable"
+        messagesPack="com.company.pizzaplace.web.screens.dish">
+    <data readOnly="true">
+        <collection id="dishesDc"
+                    class="com.company.pizzaplace.entity.Dish"
+                    view="dish-view">
+            <loader id="dishesDl">
+                <query>
+                    <![CDATA[select e from pizzaplace_Dish e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="dishesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="dishesTable"
+                dataLoader="dishesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="dishesTable"
+                    width="100%"
+                    dataContainer="dishesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="price"/>
+                <column id="dishType"/>
+                <column id="dishSize"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="dishesTable.create"/>
+                <button id="editBtn" action="dishesTable.edit"/>
+                <button id="removeBtn" action="dishesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

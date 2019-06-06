@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.pizzaplace.web.screens.order">
+    <data>
+        <instance id="orderDc"
+                  class="com.company.pizzaplace.entity.Order"
+                  view="order-view">
+            <loader/>
+            <collection id="linesDc" property="lines"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <hbox spacing="true" align="MIDDLE_CENTER">
+        <form id="form" dataContainer="orderDc">
+            <column width="250px">
+                <pickerField id="customerField" property="customer">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="nameField" property="name"/>
+                <textField id="addressField" property="address"/>
+                <textField id="telephoneNumberField" property="telephoneNumber"/>
+                <dateField id="orderTimeField" property="orderTime"/>
+                <textField id="amountField" property="totalAmount" editable="false"/>
+                <textField id="discountField" property="discount" editable="false"/>
+                <textField id="finalAmountField" property="finalAmount" editable="false"/>
+                <textField id="instructionsField" property="specialDeliveryInstructions" width="200px" height="100px"/>
+
+            </column>
+        </form>
+        <groupBox id="linesBox" caption="Dishes: 3+ Dishes -> -5% 10+ Dishes -10%">
+            <table id="linesTable" dataContainer="linesDc" width="400px" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="dish"/>
+                    <column id="dish.price"/>
+                    <column id="quantity"/>
+                </columns>
+                <buttonsPanel align="TOP_CENTER">
+                    <button action="linesTable.create" width="100"/>
+                    <button action="linesTable.edit" width="100"/>
+                    <button action="linesTable.remove" width="100"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        </hbox>
+        <hbox id="editActions" spacing="true" align="TOP_CENTER">
+            <button action="windowCommitAndClose" id="okButton"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

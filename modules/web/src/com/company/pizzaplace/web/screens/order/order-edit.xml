@@ -57,6 +57,7 @@
         <hbox id="editActions" spacing="true" align="TOP_CENTER">
             <button action="windowCommitAndClose" id="okButton"/>
             <button action="windowClose"/>
+            <button id="invoiceBtn" caption="Print Invoice"/>
         </hbox>
     </layout>
 </window>

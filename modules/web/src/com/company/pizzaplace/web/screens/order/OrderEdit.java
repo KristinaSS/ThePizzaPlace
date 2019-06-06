@@ -10,6 +10,7 @@ import com.haulmont.cuba.gui.model.CollectionPropertyContainer;
 import com.haulmont.cuba.gui.model.InstanceContainer;
 import com.haulmont.cuba.gui.screen.*;
 import com.company.pizzaplace.entity.Order;
+import com.haulmont.reports.gui.actions.EditorPrintFormAction;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
@@ -42,8 +43,16 @@ public class OrderEdit extends StandardEditor<Order> {
     private Table<DishQuantity> linesTable;
     @Inject
     private InstanceContainer<Order> orderDc;
+    @Inject
+    private Button invoiceBtn;
+
+    @Subscribe
+    private void onInit1(InitEvent event) {
+        invoiceBtn.setAction(new EditorPrintFormAction(this,null));
+    }
 
 
+    
     @Subscribe("customerField")
     private void onCustomerFieldValueChange(HasValue.ValueChangeEvent<Customer> event) {
         getEditedEntity().setName(customerField.getValue().getName());
@@ -60,7 +69,6 @@ public class OrderEdit extends StandardEditor<Order> {
     @Subscribe
     private void onBeforeCommitChanges(BeforeCommitChangesEvent event) {
         getEditedEntity().setOrderTime(LocalDateTime.now());
-
     }
 
     @Subscribe(id = "linesDc", target = Target.DATA_CONTAINER)
@@ -134,4 +142,10 @@ public class OrderEdit extends StandardEditor<Order> {
         }
         return BigDecimal.ZERO;
     }
+/*
+    @Subscribe("invoiceBtn")
+    private void onInvoiceBtnClick(Button.ClickEvent event) {
+        invoiceBtn.setAction(new EditorPrintFormAction(this,null));
+    }*/
+
 }

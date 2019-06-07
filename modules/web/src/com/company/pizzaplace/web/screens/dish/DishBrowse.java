@@ -33,7 +33,7 @@ public class DishBrowse extends StandardLookup<Dish> {
             assert dish != null;
             List<String> stringList = new ArrayList<>();
             for(Ingredient ingredient : dish.getIngredients()){
-                stringList.add(ingredient.toString());
+                stringList.add(ingredient.getName());
             }
             notifications.create().withCaption("Ingedients: " + stringList).show();
         }));

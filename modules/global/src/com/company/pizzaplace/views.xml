@@ -41,4 +41,9 @@
         <property name="dishType" view="_minimal"/>
         <property name="ingredients" view="_minimal"/>
     </view>
+    <view entity="pizzaplace_Dish" name="dish-view_1" extends="_local">
+        <property name="dishType" view="_minimal"/>
+        <property name="ingredients" view="_minimal"/>
+        <property name="dishPhoto" view="_minimal"/>
+    </view>
 </views>

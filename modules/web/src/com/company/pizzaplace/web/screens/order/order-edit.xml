@@ -31,7 +31,6 @@
                 <textField id="discountField" property="discount" editable="false"/>
                 <textField id="finalAmountField" property="finalAmount" editable="false"/>
                 <textField id="instructionsField" property="specialDeliveryInstructions" width="200px" height="100px"/>
-
             </column>
         </form>
         <groupBox id="linesBox" caption="Dishes: 3+ Dishes -> -5% 10+ Dishes -10%">
@@ -47,7 +46,7 @@
                     <column id="quantity"/>
                 </columns>
                 <buttonsPanel align="TOP_CENTER">
-                    <button action="linesTable.create" width="100"/>
+                    <button action="linesTable.create" caption="Add" width="100"/>
                     <button action="linesTable.edit" width="100"/>
                     <button action="linesTable.remove" width="100"/>
                 </buttonsPanel>

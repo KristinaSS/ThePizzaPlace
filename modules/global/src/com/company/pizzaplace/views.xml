@@ -4,12 +4,10 @@
     <view entity="pizzaplace_DishQuantity" name="dishQuantity-view" extends="_local">
         <property name="dish" view="_local"/>
     </view>
-    <view entity="pizzaplace_Dish" name="dish-view" extends="_local">
-        <property name="dishType" view="_minimal"/>
-    </view>
     <view entity="pizzaplace_Dish" name="dish-edit" extends="_local">
         <property name="dishType" view="_minimal"/>
         <property name="ingredients" view="_minimal"/>
+        <property name="dishPhoto" view="_minimal"/>
     </view>
     <view entity="pizzaplace_Order" name="order-view" extends="_local">
         <property name="customer" view="_minimal">
@@ -38,5 +36,9 @@
             </property>
             <property name="finalAmount"/>
         </property>
+    </view>
+    <view entity="pizzaplace_Dish" name="dish-view" extends="_local">
+        <property name="dishType" view="_minimal"/>
+        <property name="ingredients" view="_minimal"/>
     </view>
 </views>

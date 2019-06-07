@@ -50,8 +50,6 @@ public class OrderEdit extends StandardEditor<Order> {
     private void onInit1(InitEvent event) {
         invoiceBtn.setAction(new EditorPrintFormAction(this,null));
     }
-
-
     
     @Subscribe("customerField")
     private void onCustomerFieldValueChange(HasValue.ValueChangeEvent<Customer> event) {

@@ -15,6 +15,7 @@
                 width="800"/>
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="dishDc">
+            <hbox align="TOP_CENTER" spacing="true">
             <column width="250px">
                 <textField id="nameField" property="name"/>
                 <textField id="priceField" property="price"/>
@@ -26,6 +27,15 @@
                 </pickerField>
                 <lookupField id="dishSizeField" property="dishSize"/>
             </column>
+            <groupBox>
+                <image id="dishPhoto" width="AUTO" height="AUTO" align="TOP_CENTER"/>
+                <buttonsPanel align="BOTTOM_CENTER">
+                    <upload id="uploadField"/>
+                    <button id="downloadFile" caption="Download"/>
+                    <button id="clearFile" caption="Clear"/>
+                </buttonsPanel>
+            </groupBox>
+            </hbox>
         </form>
         <groupBox id="ingredientsBox" caption="msg://com.company.pizzaplace.entity/Dish.ingredients">
             <table id="ingredientsTable" dataContainer="ingredientsDc" width="100%" height="200px">

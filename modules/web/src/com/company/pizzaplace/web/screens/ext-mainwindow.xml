@@ -1,6 +1,11 @@
 <window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
         class="com.company.pizzaplace.web.screens.ExtAppMainWindow"
         caption="mainMsg://application.caption">
+    <dsContext>
+        <collectionDatasource id="ordersDs" class="com.company.pizzaplace.entity.Order">
+            <query><![CDATA[select e from pizzaplace_Order e where e.customer.numberOfOrders > 10]]></query>
+        </collectionDatasource>
+    </dsContext>
     <layout expand="horizontalWrap"
             stylename="c-sidemenu-responsive"
             responsive="true">
@@ -65,8 +70,27 @@
                            align="MIDDLE_CENTER"
                            width="100%"
                            stylename="c-welcome-text"
-                           value="mainMsg://application.welcomeText"/>
+                           value="Welcome to The Pizza Lab"/>
+                    <vbox margin="true">
+                    <table id="orderstobeDelivered" width="100%" height="AUTO" >
+                        <columns>
+                            <column id="name"/>
+                            <column id="address"/>
+                            <column id="telephoneNumber"/>
+                            <column id="orderTime"/>
+<!--                            <column id="totalAmount"/>
+                            <column id="discount"/>-->
+                            <column id="finalAmount"/>
+           <!--                 <column id="isDelivered"/>-->
+<!--                            <column id="deliveryTime"/>
+                            <column id="specialDeliveryInstructions"/>-->
+                        </columns>
+                        <rows datasource="ordersDs"/>
+                    </table>
+                    </vbox>
+
                 </initialLayout>
+
             </workArea>
         </hbox>
     </layout>

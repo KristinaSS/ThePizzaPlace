@@ -14,13 +14,15 @@
                 width="800"/>
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="customerDc">
+            <hbox align="MIDDLE_CENTER" spacing="true">
             <column width="250px">
                 <textField id="nameField" property="name"/>
                 <textField id="emailField" property="email"/>
                 <textField id="numberOfOrdersField" property="numberOfOrders" editable="false"/>
             </column>
+            </hbox>
         </form>
-        <hbox id="editActions" spacing="true">
+        <hbox id="editActions" spacing="true" align="TOP_CENTER">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>
         </hbox>

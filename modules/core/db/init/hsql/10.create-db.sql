@@ -89,6 +89,7 @@ create table PIZZAPLACE_DISH (
     PRICE decimal(19, 2) not null,
     DISH_TYPE_ID varchar(36) not null,
     DISH_SIZE varchar(50),
+    DISH_PHOTO_ID varchar(36),
     --
     primary key (ID)
 )^

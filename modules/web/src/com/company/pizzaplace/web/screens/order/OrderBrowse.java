@@ -45,13 +45,9 @@ public class OrderBrowse extends StandardLookup<Order> {
     @Subscribe
     private void onInit(InitEvent event) {
         ordersTable.setItemClickAction(new BaseAction("clickItem")
-        .withHandler(actionPerformedEvent -> {
-            actionOrder();
-        }));
+        .withHandler(actionPerformedEvent -> actionOrder()));
         ordersTable.setEnterPressAction(new BaseAction("clickItem1")
-                .withHandler(actionPerformedEvent -> {
-                    actionOrder();
-                }));
+                .withHandler(actionPerformedEvent -> actionOrder()));
     }
 
     private void editSelectedEntity(Delivered entity) {
